@@ -127,9 +127,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BracketChecker.h" />
+    <ClInclude Include="Evaluator.h" />
+    <ClInclude Include="ExpressionCalculator.h" />
     <ClInclude Include="Lexer.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="Token.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

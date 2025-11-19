@@ -1,4 +1,36 @@
 #pragma once
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 #include <string>
 #include "Queue.h"
 #include <cctype>
@@ -116,3 +148,4 @@ Action actionTable[STATE_COUNT][CHAR_TYPE_COUNT] = {
     // From Error
     {error, error, error, error, error, error}
 };
+*/
