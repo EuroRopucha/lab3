@@ -1,8 +1,29 @@
 #pragma once
+#include "Queue.h"
+#include "Stack.h"
+#include "Token.h"
+#include <map>
+using namespace std;
+
+
+class Parser {
+
+public:
+    Queue<Token> toPostfix(Queue<Token> infix) {
+
+
+        Queue<Token> output;
+        Stack<Token> operators(infix.size());
+        map<string, int> priority = {
+            {"+", 1}, {"-", 1}, {"*", 2}, {"/", 2}
+        };
+
+
+    }
 
 
 
-
+};
 
 
 
@@ -30,18 +51,7 @@
 
 
 /*
-#pragma once
-#include "Queue.h"
-#include "Token.h"
-#include "Stack.h"
 
-class Parser {
-public:
-    Queue<Token> toPostfix(Queue<Token> infix);
-};
-
-
-#include "Parser.h"
 #include <map>
 
 Queue<Token> Parser::toPostfix(Queue<Token> infix) {

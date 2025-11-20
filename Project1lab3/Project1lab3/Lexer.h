@@ -1,10 +1,25 @@
 #pragma once
+#include "Token.h"
+#include "Queue.h"
+#include <string>
+#include <stdexcept>
+using namespace std;
 
 
 
+class Lexer {
+
+public:
+
+    Queue<Token> tokenize(const string& input) {
+
+        Queue<Token> output;
 
 
+    }
 
+
+};
 
 
 
@@ -31,25 +46,9 @@
 
 
 /*
-#include <string>
-#include "Queue.h"
+
 #include <cctype>
-#include <stdexcept>
 
-enum class TokenType {
-    Number,
-    Operator,
-    LeftBracket,
-    RightBracket
-};
-
-class Token {
-public:
-    TokenType type;
-    std::string value;
-
-    Token(TokenType t, const std::string& v) : type(t), value(v) {}
-};
 
 class Lexer {
 public:

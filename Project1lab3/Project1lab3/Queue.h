@@ -45,5 +45,8 @@ public:
         s = next(s);
         return res;
     }
+    int size() {
+        return n;
+    }
 
 };

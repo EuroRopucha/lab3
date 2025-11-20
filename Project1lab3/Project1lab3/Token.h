@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+using namespace std;
 
 enum class TokenType {
     Number,
@@ -11,8 +12,8 @@ enum class TokenType {
 class Token {
 public:
     TokenType type;
-    std::string value;
+    string value;
 
-    Token(TokenType t, const std::string& v) : type(t), value(v) {}
+    Token(TokenType t, const string& v) : type(t), value(v) {}
 };
 

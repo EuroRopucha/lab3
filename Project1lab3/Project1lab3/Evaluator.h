@@ -1,9 +1,24 @@
 #pragma once
+#include "Queue.h"
+#include "Stack.h"
+#include "Token.h"
+#include <stdexcept>
+
+
+class Evaluator {
+
+public:
+
+    int evaluate(Queue<Token> postfix) {
 
 
 
 
+    }
 
+
+
+};
 
 
 
@@ -30,18 +45,7 @@
 
 /*
 
-#pragma once
-#include "Queue.h"
-#include "Token.h"
-#include "Stack.h"
 
-class Evaluator {
-public:
-    int evaluate(Queue<Token> postfix);
-};
-
-#include "Evaluator.h"
-#include <stdexcept>
 
 int Evaluator::evaluate(Queue<Token> postfix) {
     Stack<int> values(postfix.size());
