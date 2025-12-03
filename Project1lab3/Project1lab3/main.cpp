@@ -3,20 +3,20 @@
 using namespace std;
 
 int main() {
-    /*
-    string input;
-    cout << "Введите выражение: ";
-    getline(std::cin, input);
+    //string input;
+    //getline(std::cin, input);
+
+    string expression = "3 + 4 * 2";
 
     try {
         ExpressionCalculator calc;
-        int result = calc.calculate(input);
-        cout << "Результат: " << result << endl;
+        int result = calc.calculate("3+14 * 2");
+        cout << "Result: " << result << endl;
     }
-    catch (const std::exception& e) {
-        cerr << "Ошибка: " << e.what() << endl;
+    catch (const exception& e) {
+        cout << "Error: " << e.what() << endl;
     }
-    */
+
     return 0;
 }
 

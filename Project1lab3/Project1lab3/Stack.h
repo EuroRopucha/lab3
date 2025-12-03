@@ -32,13 +32,13 @@ public:
             mem[i] = st.mem[i];
         }
     }
-    void Push(const T& v) {
+    void push(const T& v) {
         if (curr == n - 1)
             throw - 1;
         mem[++curr] = v;
     }
 
-    T Pop() {
+    T pop() {
         if (curr < 0)
             throw - 1;
         return mem[curr--];

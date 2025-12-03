@@ -14,25 +14,25 @@ public:
 
         for (int i = 0; i < len; i++) {
             if (expression[i] == '(') {
-                ind.Push(i);
+                ind.push(i);
             }
             else if (expression[i] == ')') {
                 if (ind.isEmpty()) {
-                    errors.Push(i);
+                    errors.push(i);
                 }
                 else {
-                    ind.Pop();
+                    ind.pop();
                 }
             }
         }
         while (!ind.isEmpty()) {
-            errors.Push(ind.Pop());
+            errors.push(ind.pop());
         }
 
         if (!errors.isEmpty()) {
             cout << "Bracket errors at:";
             while (!errors.isEmpty()) {
-                cout << " " << errors.Pop() << ";";
+                cout << " " << errors.pop() << ";";
             }
             cout << "\n";
             throw invalid_argument("Unmatched brackets found");

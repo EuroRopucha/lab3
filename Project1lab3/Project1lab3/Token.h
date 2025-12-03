@@ -5,7 +5,8 @@ enum class TokenType {
     Operator,
     LeftBracket,
     RightBracket,
-    Space
+    Space,
+    None
 };
 
 class Token {
@@ -15,9 +16,6 @@ public:
 
     Token() : type(TokenType::Space), value("") {}
     Token(TokenType t, const std::string& v) : type(t), value(v) {}
-
-    TokenType getType() { return type; }
-    std::string getValue() { return value; }
 
 };
 

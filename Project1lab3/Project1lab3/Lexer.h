@@ -9,21 +9,7 @@ using namespace std;
 enum State {
     St,
     SNum,
-    SOp,
-    Space,
-    SErr
 };
-// St -> SNum если встретили цифру
-// St -> SOp если встретили + - * /
-// St -> Space если встретили пробел
-// St -> SErr если встретили недопустимый символ
-// SNum -> SNum если продолжаем идти по цифрам
-// SNum -> St если встретили пробел или оператор (заканчиваем число, создаем токен)
-// SOp -> St если считали оператор (создаем токен)
-// Space -> St игноририруем пробелы
-// SErr -> SErr остаемся в состоянии ошибки
-// Space, SErr можно убрать и обрабатывать в St
-
 
 class Lexer {
 
@@ -33,7 +19,7 @@ public:
 
         State s = St;
         size_t size = input.size();
-        Queue<Token> tokens;
+        Queue<Token> tokens(size);
         string currNum;
         
         for (size_t i = 0; i < size; i++) {
@@ -47,7 +33,8 @@ public:
                     s = SNum;
                 }
                 else if (c == '+' || c == '-' || c == '*' || c == '/' ) {
-                    s = SOp;
+                    string op(1, c);
+                    tokens.push(Token(TokenType::Operator, op));
                 }
                 else if (c == '(') {
                     tokens.push(Token(TokenType::LeftBracket, "("));
@@ -56,11 +43,9 @@ public:
                     tokens.push(Token(TokenType::RightBracket, ")"));
                 }
                 else if (c == ' ') {
-                    s = Space;
                 }
                 else {
-                    throw std::invalid_argument("Error: lexer found an unknown symbol");
-                    s = SErr;
+                    throw invalid_argument("Error: lexer found an unknown symbol");
                 }
                 break;
             case SNum:
@@ -68,23 +53,12 @@ public:
                     currNum = currNum + c;
                     s = SNum;
                 }
-                if (c == '+' || c == '-' || c == '*' || c == '/' || c == ' ') {
+                else {
                     tokens.push(Token(TokenType::Number, currNum));
                     currNum.clear();
                     s = St;
+                    i--;
                 }
-                break;
-            case SOp: {
-                string op(1, c);
-                tokens.push(Token(TokenType::Operator, op));
-                s = St;
-                break;
-            }
-            case Space:
-                s = St;
-                break;
-            case SErr:
-                s = SErr;
                 break;
             }
         }

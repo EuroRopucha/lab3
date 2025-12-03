@@ -127,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BracketChecker.h" />
-    <ClInclude Include="Evaluator.h" />
+    <ClInclude Include="Calculator.h" />
     <ClInclude Include="ExpressionCalculator.h" />
     <ClInclude Include="Lexer.h" />
     <ClInclude Include="Syntaxer.h" />

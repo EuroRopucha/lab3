@@ -1,58 +1,71 @@
-
-
-/*
 #pragma once
 #include "Queue.h"
-#include "Token.h"
 #include "Stack.h"
+#include "Token.h"
+#include <iostream>
+using namespace std;
 
 class Parser {
 public:
-    Queue<Token> toPostfix(Queue<Token> infix);
+    Queue<Token> toPostfix(Queue<Token> tokens) {
+
+        Stack<Token> opStack(tokens.size());
+        Queue<Token> Postfix(tokens.size());
+
+        while (!tokens.isEmpty()) {
+            Token curr = tokens.pop();
+
+            switch (curr.type) {
+            case TokenType::Number:
+                Postfix.push(curr);
+                break;
+
+            case TokenType::Operator:
+                // пока в стеке оператор с приоритетом >= текущего
+                while (!opStack.isEmpty() &&
+                    opStack.top().type == TokenType::Operator &&
+                    priority(opStack.top()) >= priority(curr)) {
+                    Postfix.push(opStack.pop());
+                }
+                opStack.push(curr);
+                break;
+
+            case TokenType::LeftBracket:
+                opStack.push(curr);
+                break;
+
+            case TokenType::RightBracket:
+                // Выбрасываем операторы до '('
+                while (!opStack.isEmpty() && opStack.top().type != TokenType::LeftBracket) {
+                    Postfix.push(opStack.pop());
+                }
+                if (opStack.isEmpty()) {
+                    throw std::invalid_argument("Mismatched parentheses");
+                }
+                opStack.pop(); // убрать '('
+                break;
+
+            case TokenType::Space:
+                break;
+            }
+        }
+
+        // В конце переносим оставшиеся операторы
+        while (!opStack.isEmpty()) {
+            Token t = opStack.pop();
+            if (t.type == TokenType::LeftBracket || t.type == TokenType::RightBracket) {
+                throw std::invalid_argument("Mismatched parentheses at end");
+            }
+            Postfix.push(t);
+        }
+
+        return Postfix;
+    }
+
+private:
+    int priority(const Token& t) {
+        if (t.value == "*" || t.value == "/") return 2;
+        if (t.value == "+" || t.value == "-") return 1;
+        return 0;
+    }
 };
-
-
-#include "Parser.h"
-#include <map>
-
-Queue<Token> Parser::toPostfix(Queue<Token> infix) {
-    Queue<Token> output;
-    Stack<Token> operators(infix.size());
-    std::map<std::string, int> precedence = {
-        {"+", 1}, {"-", 1}, {"*", 2}, {"/", 2}
-    };
-
-    while (!infix.empty()) {
-        Token token = infix.dequeue();
-        if (token.type == TokenType::Number) {
-            output.enqueue(token);
-        }
-        else if (token.type == TokenType::Operator) {
-            while (!operators.isEmpty() &&
-                operators.Top().type == TokenType::Operator &&
-                precedence[operators.Top().value] >= precedence[token.value]) {
-                output.enqueue(operators.Pop());
-            }
-            operators.Push(token);
-        }
-        else if (token.type == TokenType::LeftBracket) {
-            operators.Push(token);
-        }
-        else if (token.type == TokenType::RightBracket) {
-            while (!operators.isEmpty() && operators.Top().type != TokenType::LeftBracket) {
-                output.enqueue(operators.Pop());
-            }
-            if (!operators.isEmpty()) {
-                operators.Pop(); // remove '('
-            }
-        }
-    }
-
-    while (!operators.isEmpty()) {
-        output.enqueue(operators.Pop());
-    }
-
-    return output;
-}
-
-*/

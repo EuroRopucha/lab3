@@ -2,4 +2,61 @@
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\BracketChecker.h(11,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(17,42): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Parser.h(12,41): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Calculator.h(13,35): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(49,12): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(49,12):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Lexer.h(18,18):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "Queue<Token>"
+          C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(44,4):
+          во время компиляции функции-члена класс шаблон "T Queue<T>::pop(void)"
+          with
+          [
+              T=Token
+          ]
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(21,24):
+              см. первую ссылку на "Queue<Token>::pop" в "Syntaxer::analyze"
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(41,12): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(41,12):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(37,7):
+          во время компиляции функции-члена класс шаблон "void Queue<Token>::push(const T &)"
+          with
+          [
+              T=Token
+          ]
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Lexer.h(37,32):
+              см. первую ссылку на "Queue<Token>::push" в "Lexer::tokenize"
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(35,20): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(35,20):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(34,7):
+          во время компиляции функции-члена класс шаблон "bool Queue<Token>::isEmpty(void)"
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(14,9):
+              см. первую ссылку на "Queue<Token>::isEmpty" в "Syntaxer::analyze"
+  
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(32,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "main.cpp")
+      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(32,25):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(31,7):
+          во время компиляции функции-члена класс шаблон "bool Queue<Token>::isFull(void)"
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(38,3):
+              см. первую ссылку на "Queue<Token>::isFull" в "Queue<Token>::push"
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Lexer.h(37,32):
+              см. первую ссылку на "Queue<Token>::push" в "Lexer::tokenize"
+  
   Project1lab3.vcxproj -> C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\x64\Debug\Project1lab3.exe
