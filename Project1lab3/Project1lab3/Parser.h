@@ -2,19 +2,35 @@
 #include "Queue.h"
 #include "Stack.h"
 #include "Token.h"
+#include "map"
 #include <iostream>
 using namespace std;
 
 class Parser {
-public:
-    Queue<Token> toPostfix(Queue<Token> tokens) {
 
+    map<string, int> priorities = {
+            {"u-", 3},
+            {"*",  2},
+            {"/",  2},
+            {"+",  1},
+            {"-",  1},
+            {"(",  0},
+            {")",  0}
+    };
+
+    int priority(const Token& t) {
+        return priorities.at(t.value);
+    }
+
+public:
+
+    Queue<Token> toPostfix(Queue<Token> tokens) {
         Stack<Token> opStack(tokens.size());
         Queue<Token> Postfix(tokens.size());
 
         while (!tokens.isEmpty()) {
             Token curr = tokens.pop();
-            cout << "k";
+
             switch (curr.type) {
             case TokenType::Number:
                 Postfix.push(curr);
@@ -22,17 +38,15 @@ public:
 
             case TokenType::Operator:
                 if (curr.value == "-") {
-                    // ѕроверка: унарный минус?
+                    // проверка унарный минус
                     if (Postfix.isEmpty() ||
-                        (!Postfix.isEmpty() && (opStack.isEmpty() || opStack.top().type == TokenType::Operator || opStack.top().type == TokenType::LeftBracket))) {
-                        // ”нарный минус: создаЄм специальный токен
+                        (!Postfix.isEmpty() && (opStack.isEmpty() || opStack.top().type == TokenType::LeftBracket))) {
                         Token unary(TokenType::Operator, "u-");
                         opStack.push(unary);
                         break;
                     }
                 }
-
-                // обычный бинарный оператор
+                // бинарный оператор
                 while (!opStack.isEmpty() &&
                     opStack.top().type == TokenType::Operator &&
                     priority(opStack.top()) >= priority(curr)) {
@@ -46,12 +60,11 @@ public:
                 break;
 
             case TokenType::RightBracket:
-                // ¬ыбрасываем операторы до '('
                 while (!opStack.isEmpty() && opStack.top().type != TokenType::LeftBracket) {
                     Postfix.push(opStack.pop());
                 }
                 if (opStack.isEmpty()) {
-                    throw std::invalid_argument("Mismatched parentheses");
+                    throw invalid_argument("Unmatched closing bracket");
                 }
                 opStack.pop(); // убрать '('
                 break;
@@ -61,23 +74,14 @@ public:
             }
         }
 
-        // ¬ конце переносим оставшиес€ операторы
         while (!opStack.isEmpty()) {
             Token t = opStack.pop();
             if (t.type == TokenType::LeftBracket || t.type == TokenType::RightBracket) {
-                throw std::invalid_argument("Mismatched parentheses at end");
+                throw std::invalid_argument("Unmatched closing bracket");
             }
             Postfix.push(t);
         }
 
         return Postfix;
-    }
-
-private:
-    int priority(const Token& t) {
-        if (t.value == "u-") return 3;
-        if (t.value == "*" || t.value == "/") return 2;
-        if (t.value == "+" || t.value == "-") return 1;
-        return 0;
     }
 };

@@ -5,10 +5,10 @@ C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(18,42): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Parser.h(12,41): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Parser.h(28,41): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Calculator.h(13,35): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Calculator.h(26,35): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(49,12): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных

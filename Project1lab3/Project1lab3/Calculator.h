@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Queue.h"
 #include "Stack.h"
 #include "Token.h"
@@ -8,7 +7,21 @@
 using namespace std;
 
 class Calculator {
+
+private:
+    int applyOperator(int a, int b, const string& op) {
+        if (op == "+") return a + b;
+        if (op == "-") return a - b;
+        if (op == "*") return a * b;
+        if (op == "/") {
+            if (b == 0) throw invalid_argument("Division by zero");
+            return a / b;
+        }
+        throw invalid_argument("Unknown operator: " + op);
+    }
+
 public:
+
     int calc(Queue<Token> postfix) {
         Stack<int> st(postfix.size());
 
@@ -24,16 +37,16 @@ public:
 
             case TokenType::Operator: {
                 if (curr.value == "u-") {
-                    // Унарный минус: нужен только один операнд
-                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for unary minus");
+                    // унарный минус. один операнд
+                    if (st.isEmpty()) throw invalid_argument("Missing operand for unary minus");
                     int a = st.pop();
                     st.push(-a);
                 }
                 else {
-                    // Бинарные операторы: нужны два операнда
-                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
+                    // бинарные операторы. два операнда
+                    if (st.isEmpty()) throw invalid_argument("Missing operand for operator");
                     int b = st.pop();
-                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
+                    if (st.isEmpty()) throw invalid_argument("Missing operand for operator");
                     int a = st.pop();
 
                     int res = applyOperator(a, b, curr.value);
@@ -45,32 +58,22 @@ public:
             case TokenType::LeftBracket:
             case TokenType::RightBracket:
             case TokenType::Space:
-                // В постфиксной форме скобок и пробелов быть не должно
+                // в постфиксной форме скобок и пробелов быть не должно
                 break;
             }
         }
 
         if (st.isEmpty()) {
-            throw std::invalid_argument("No result on stack");
+            throw invalid_argument("No result on stack");
         }
         int result = st.pop();
 
         if (!st.isEmpty()) {
-            throw std::invalid_argument("Extra operands left on stack");
+            throw invalid_argument("Extra operands left on stack");
         }
 
         return result;
     }
 
-private:
-    int applyOperator(int a, int b, const std::string& op) {
-        if (op == "+") return a + b;
-        if (op == "-") return a - b;
-        if (op == "*") return a * b;
-        if (op == "/") {
-            if (b == 0) throw std::invalid_argument("Division by zero");
-            return a / b; // целочисленное деление
-        }
-        throw std::invalid_argument("Unknown operator: " + op);
-    }
+
 };
