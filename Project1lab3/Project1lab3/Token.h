@@ -1,19 +1,23 @@
 #pragma once
-#include <string>
-using namespace std;
 
 enum class TokenType {
     Number,
     Operator,
     LeftBracket,
-    RightBracket
+    RightBracket,
+    Space
 };
 
 class Token {
 public:
     TokenType type;
-    string value;
+    std::string value;
 
-    Token(TokenType t, const string& v) : type(t), value(v) {}
+    Token(TokenType t, const std::string& v) : type(t), value(v) {}
+
+    TokenType getType() { return type; }
+    std::string getValue() { return value; }
+
 };
+
 

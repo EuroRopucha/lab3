@@ -1,10 +1,29 @@
 #pragma once
-#include "Token.h"
-#include "Queue.h"
+
+#include <iostream>
 #include <string>
-#include <stdexcept>
+#include "Queue.h"
+#include "Token.h"
+//#include <cctype>
+//#include <stdexcept>
 using namespace std;
 
+enum State {
+    St,
+    SNum,
+    SOp,
+    Space,
+    SErr
+};
+// St -> SNum если встретили цифру
+// St -> SOp если встретили + - * /
+// St -> Space если встретили пробел
+// St -> SErr если встретили недопустимый символ
+// SNum -> SNum если продолжаем идти по цифрам
+// SNum -> St если встретили пробел или оператор (заканчиваем число, создаем токен)
+// SOp -> St если считали оператор (создаем токен)
+// Space -> St игноририруем пробелы
+// SErr -> SErr остаемся в состоянии ошибки
 
 
 class Lexer {
@@ -13,12 +32,60 @@ public:
 
     Queue<Token> tokenize(const string& input) {
 
-        Queue<Token> output;
+        State s = St;
+        size_t size = input.size();
+        Queue<Token> tokens;
+        string currNum;
+        
+        for (size_t i = 0; i <= size; i++) {
 
+            char c = input[i];
+            
 
+            switch (s) {
+            case St:
+                if (c >= '0' && c <= '9') {
+                    currNum = currNum + c;
+                    s = SNum;
+                }
+                if (c == '+' || c == '-' || c == '*' || c == '/' ) {
+                    s = SOp;
+                }
+                if (c == ' ') {
+                    s = Space;
+                }
+                else {
+                    cout << "Error: lexer found an unknown symbol";
+                    s = SErr;
+                }
+                break;
+            case SNum:
+                if (c >= '0' && c <= '9') {
+                    currNum = currNum + c;
+                    s = SNum;
+                }
+                if (c == '+' || c == '-' || c == '*' || c == '/' || c == ' ') {
+                    tokens.push(Token(TokenType::Number, currNum));
+                    currNum.clear();
+                    s = St;
+                }
+                break;
+            case SOp: {
+                string op(1, c);
+                tokens.push(Token(TokenType::Operator, op));
+                s = St;
+                break;
+            }
+            case Space:
+                s = St;
+                break;
+            case SErr:
+                s = SErr;
+                break;
+            }
+        }
+        return tokens;
     }
-
-
 };
 
 
@@ -43,11 +110,11 @@ public:
 
 
 
-
-
 /*
-
+#include <string>
+#include "Queue.h"
 #include <cctype>
+#include <stdexcept>
 
 
 class Lexer {
