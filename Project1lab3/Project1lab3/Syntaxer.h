@@ -10,7 +10,8 @@ using namespace std;
 
 class Syntaxer {
 public:
-    void analyze(Queue<Token>& tokens) {
+    void analyze(Queue<Token>& tokens_original) {
+        Queue<Token> tokens = tokens_original;
         if (tokens.isEmpty()) {
             throw invalid_argument("Empty expression is not allowed");
         }

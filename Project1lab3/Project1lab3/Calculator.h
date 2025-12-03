@@ -23,13 +23,22 @@ public:
             }
 
             case TokenType::Operator: {
-                if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
-                int b = st.pop();
-                if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
-                int a = st.pop();
+                if (curr.value == "u-") {
+                    // ”нарный минус: нужен только один операнд
+                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for unary minus");
+                    int a = st.pop();
+                    st.push(-a);
+                }
+                else {
+                    // Ѕинарные операторы: нужны два операнда
+                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
+                    int b = st.pop();
+                    if (st.isEmpty()) throw std::invalid_argument("Missing operand for operator");
+                    int a = st.pop();
 
-                int res = applyOperator(a, b, curr.value);
-                st.push(res);
+                    int res = applyOperator(a, b, curr.value);
+                    st.push(res);
+                }
                 break;
             }
 
@@ -65,4 +74,3 @@ private:
         throw std::invalid_argument("Unknown operator: " + op);
     }
 };
-

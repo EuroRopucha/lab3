@@ -10,7 +10,7 @@ int main() {
 
     try {
         ExpressionCalculator calc;
-        int result = calc.calculate("3+14 * 2");
+        int result = calc.calculate("-3+14 * 2");
         cout << "Result: " << result << endl;
     }
     catch (const exception& e) {

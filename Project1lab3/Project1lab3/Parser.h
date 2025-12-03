@@ -14,14 +14,25 @@ public:
 
         while (!tokens.isEmpty()) {
             Token curr = tokens.pop();
-
+            cout << "k";
             switch (curr.type) {
             case TokenType::Number:
                 Postfix.push(curr);
                 break;
 
             case TokenType::Operator:
-                // пока в стеке оператор с приоритетом >= текущего
+                if (curr.value == "-") {
+                    // ѕроверка: унарный минус?
+                    if (Postfix.isEmpty() ||
+                        (!Postfix.isEmpty() && (opStack.isEmpty() || opStack.top().type == TokenType::Operator || opStack.top().type == TokenType::LeftBracket))) {
+                        // ”нарный минус: создаЄм специальный токен
+                        Token unary(TokenType::Operator, "u-");
+                        opStack.push(unary);
+                        break;
+                    }
+                }
+
+                // обычный бинарный оператор
                 while (!opStack.isEmpty() &&
                     opStack.top().type == TokenType::Operator &&
                     priority(opStack.top()) >= priority(curr)) {
@@ -64,6 +75,7 @@ public:
 
 private:
     int priority(const Token& t) {
+        if (t.value == "u-") return 3;
         if (t.value == "*" || t.value == "/") return 2;
         if (t.value == "+" || t.value == "-") return 1;
         return 0;

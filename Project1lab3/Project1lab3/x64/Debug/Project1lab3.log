@@ -2,7 +2,7 @@
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\BracketChecker.h(11,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(17,42): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(18,42): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Parser.h(12,41): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
@@ -23,7 +23,7 @@ C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3
           [
               T=Token
           ]
-              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(21,24):
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(22,24):
               см. первую ссылку на "Queue<Token>::pop" в "Syntaxer::analyze"
   
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(41,12): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
@@ -45,7 +45,7 @@ C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3
       контекст создания экземпляра шаблона (сначала самый старый)
           C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(34,7):
           во время компиляции функции-члена класс шаблон "bool Queue<Token>::isEmpty(void)"
-              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(14,9):
+              C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Syntaxer.h(15,9):
               см. первую ссылку на "Queue<Token>::isEmpty" в "Syntaxer::analyze"
   
 C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Queue.h(32,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
