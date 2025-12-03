@@ -4,8 +4,6 @@
 #include <string>
 #include "Queue.h"
 #include "Token.h"
-//#include <cctype>
-//#include <stdexcept>
 using namespace std;
 
 enum State {
@@ -24,6 +22,7 @@ enum State {
 // SOp -> St если считали оператор (создаем токен)
 // Space -> St игноририруем пробелы
 // SErr -> SErr остаемся в состоянии ошибки
+// Space, SErr можно убрать и обрабатывать в St
 
 
 class Lexer {
@@ -37,25 +36,30 @@ public:
         Queue<Token> tokens;
         string currNum;
         
-        for (size_t i = 0; i <= size; i++) {
+        for (size_t i = 0; i < size; i++) {
 
             char c = input[i];
             
-
             switch (s) {
             case St:
                 if (c >= '0' && c <= '9') {
                     currNum = currNum + c;
                     s = SNum;
                 }
-                if (c == '+' || c == '-' || c == '*' || c == '/' ) {
+                else if (c == '+' || c == '-' || c == '*' || c == '/' ) {
                     s = SOp;
                 }
-                if (c == ' ') {
+                else if (c == '(') {
+                    tokens.push(Token(TokenType::LeftBracket, "("));
+                }
+                else if (c == ')') {
+                    tokens.push(Token(TokenType::RightBracket, ")"));
+                }
+                else if (c == ' ') {
                     s = Space;
                 }
                 else {
-                    cout << "Error: lexer found an unknown symbol";
+                    throw std::invalid_argument("Error: lexer found an unknown symbol");
                     s = SErr;
                 }
                 break;
@@ -83,6 +87,9 @@ public:
                 s = SErr;
                 break;
             }
+        }
+        if (!currNum.empty()) {
+            tokens.push(Token(TokenType::Number, currNum));
         }
         return tokens;
     }

@@ -49,4 +49,13 @@ public:
     bool isFull() {
         return s = next(next(f));
     }
+    int size() {
+        int s = 0;
+        while (!isEmpty()) {
+            pop();
+            s++;
+        }
+        return s;
+    }
+
 };

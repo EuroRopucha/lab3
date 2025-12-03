@@ -1,39 +1,3 @@
-#pragma once
-
-
-#include "Queue.h"
-#include "Token.h"
-#include "Stack.h"
-
-class Parser {
-public:
-    //Queue<Token> toPostfix(Queue<Token> infix);
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -90,4 +54,5 @@ Queue<Token> Parser::toPostfix(Queue<Token> infix) {
 
     return output;
 }
+
 */

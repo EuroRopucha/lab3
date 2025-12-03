@@ -130,6 +130,7 @@
     <ClInclude Include="Evaluator.h" />
     <ClInclude Include="ExpressionCalculator.h" />
     <ClInclude Include="Lexer.h" />
+    <ClInclude Include="Syntaxer.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />

@@ -1,14 +1,5 @@
 ﻿  main.cpp
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\BracketChecker.h(12,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\BracketChecker.h(11,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "main.cpp")
   
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\ExpressionCalculator.h(33,35): error C2039: "toPostfix": не является членом "Parser".
-  (компиляция исходного файла "main.cpp")
-      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Parser.h(8,7):
-       см. объявление "Parser"
-  
-C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\ExpressionCalculator.h(37,22): error C2039: "evaluate": не является членом "Evaluator".
-  (компиляция исходного файла "main.cpp")
-      C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\Project1lab3\Evaluator.h(7,7):
-       см. объявление "Evaluator"
-  
+  Project1lab3.vcxproj -> C:\My projects\сем 3\лаб 3 АиСД резерв\Project1lab3\x64\Debug\Project1lab3.exe

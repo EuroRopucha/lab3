@@ -38,7 +38,7 @@ public:
         mem[++curr] = v;
     }
 
-    T Pop() const {
+    T Pop() {
         if (curr < 0)
             throw - 1;
         return mem[curr--];

@@ -3,6 +3,7 @@
 using namespace std;
 
 int main() {
+    /*
     string input;
     cout << "¬ведите выражение: ";
     getline(std::cin, input);
@@ -15,7 +16,7 @@ int main() {
     catch (const std::exception& e) {
         cerr << "ќшибка: " << e.what() << endl;
     }
-
+    */
     return 0;
 }
 

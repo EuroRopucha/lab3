@@ -2,28 +2,41 @@
 #include "Stack.h"
 #include <string>
 #include <stdexcept>
+#include <iostream>
 using namespace std;
 
 class BracketChecker {
-
 public:
-
-	bool check(const string& expression) {
+    bool check(const string& expression) {
         int len = expression.length();
-        Stack<char> brackets(len);
+        Stack<int> ind(len);     // индексы открывающих скобок
+        Stack<int> errors(len);  // индексы ошибок
+
         for (int i = 0; i < len; i++) {
             if (expression[i] == '(') {
-                brackets.Push('(');
+                ind.Push(i);
             }
             else if (expression[i] == ')') {
-                if (brackets.isEmpty()) {
-                    throw std::invalid_argument("Unmatched closing bracket");
+                if (ind.isEmpty()) {
+                    errors.Push(i);
                 }
                 else {
-                    brackets.Pop();
+                    ind.Pop();
                 }
             }
         }
-        return brackets.isEmpty();
-	}
+        while (!ind.isEmpty()) {
+            errors.Push(ind.Pop());
+        }
+
+        if (!errors.isEmpty()) {
+            cout << "Bracket errors at:";
+            while (!errors.isEmpty()) {
+                cout << " " << errors.Pop() << ";";
+            }
+            cout << "\n";
+            throw invalid_argument("Unmatched brackets found");
+        }
+        return true;
+    }
 };
