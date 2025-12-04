@@ -35,12 +35,14 @@ public:
             case TokenType::Number:
                 Postfix.push(curr);
                 break;
-
+                
             case TokenType::Operator:
                 if (curr.value == "-") {
-                    // проверка унарный минус
+                    // проверка унарного минуса
                     if (Postfix.isEmpty() ||
-                        (!Postfix.isEmpty() && (opStack.isEmpty() || opStack.top().type == TokenType::LeftBracket))) {
+                        (!opStack.isEmpty() &&
+                            (opStack.top().type == TokenType::Operator ||
+                                opStack.top().type == TokenType::LeftBracket))) {
                         Token unary(TokenType::Operator, "u-");
                         opStack.push(unary);
                         break;
@@ -54,6 +56,7 @@ public:
                 }
                 opStack.push(curr);
                 break;
+
 
             case TokenType::LeftBracket:
                 opStack.push(curr);
