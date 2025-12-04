@@ -18,7 +18,7 @@ public:
     Queue<Token> tokenize(const string& input) {
 
         State s = St;
-        size_t size = input.size();
+        size_t size = input.size()+1;
         Queue<Token> tokens(size);
         string currNum;
         
@@ -43,6 +43,8 @@ public:
                     tokens.push(Token(TokenType::RightBracket, ")"));
                 }
                 else if (c == ' ') {
+                }
+                else if (c == '\0') {
                 }
                 else {
                     throw invalid_argument("Error: lexer found an unknown symbol");
